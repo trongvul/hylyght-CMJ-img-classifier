@@ -1,13 +1,13 @@
 let model, video, startButton, start, end;
 let flightTime = 0;
 let jumpHeight = 0;
-let poseLabel = "Waiting..";
+let poseLabel = "Off";
 let state = "LANDING";
 let classifyMode = false;
 
 //Load the model first
 function preload() {
-  model = ml5.imageClassifier("./model_test/model.json", () => {
+  model = ml5.imageClassifier("./model/model.json", () => {
     console.log("Model is ready");
   });
 }
@@ -68,7 +68,7 @@ function gotResults(error, results) {
     state = "JUMPING";
   }
   //When the athelete lands, change the state, classify mode, button text and calculate the flight time & jump height
-  if (state === "JUMPING" && poseLabel === "Stand") {
+  if (state === "JUMPING" && poseLabel === "Land") {
     end = millis();
     state = "LANDING";
     flightTime = (end - start) / 1000;
