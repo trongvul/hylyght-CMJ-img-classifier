@@ -15,7 +15,6 @@ function preload() {
 function setup() {
   let canvas = createCanvas(780, 460);
   canvas.position(130, 100);
-  background(100);
   video = createCapture(VIDEO);
   video.hide();
 
@@ -39,8 +38,8 @@ function draw() {
 }
 
 function classifyPose() {
-  resetLabel();
   classifyMode = true;
+  resetLabel();
   model.classify(video, gotResults);
 }
 
